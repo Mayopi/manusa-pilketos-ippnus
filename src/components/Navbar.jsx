@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Navbar = ({ children }) => {
   return (
     <div className="drawer">
@@ -12,18 +14,22 @@ const Navbar = ({ children }) => {
               </svg>
             </label>
           </div>
-          <div className="flex-1 px-2 mx-2">Manusa Pilketos</div>
+          <div className="flex-1 px-2 mx-2">
+            <Link href="/" className="btn btn-ghost">
+              Manusa Pilketos
+            </Link>
+          </div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal">
               {/* Navbar menu content here */}
               <li>
-                <a>Kandidat 1</a>
+                <Link href={"/"}>Kandidat 1</Link>
               </li>
               <li>
-                <a>Kandidat 2</a>
+                <Link href={"/"}>Kandidat 2</Link>
               </li>
               <li>
-                <a>Kandidat 3</a>
+                <Link href={"/"}>Kandidat 3</Link>
               </li>
             </ul>
           </div>
@@ -35,13 +41,13 @@ const Navbar = ({ children }) => {
         <ul className="menu p-4 w-80 min-h-full bg-base-200">
           {/* Sidebar content here */}
           <li>
-            <a>Kandidat 1</a>
+            <Link href={"/"}>Kandidat 1</Link>
           </li>
           <li>
-            <a>Kandidat 2</a>
+            <Link href={"/"}>Kandidat 2</Link>
           </li>
           <li>
-            <a>Kandidat 3</a>
+            <Link href={"/"}>Kandidat 3</Link>
           </li>
         </ul>
       </div>

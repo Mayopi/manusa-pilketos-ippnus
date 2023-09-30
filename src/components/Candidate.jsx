@@ -1,4 +1,5 @@
 import { TbListDetails } from "react-icons/tb";
+import Link from "next/link";
 
 const Candidate = () => {
   return (
@@ -14,9 +15,9 @@ const Candidate = () => {
               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, perferendis?</p>
 
               <div className="card-actions justify-end">
-                <button className="btn btn-outline btn-primary">
+                <Link href="/candidate/detail/kandidat-1" className="btn btn-outline btn-primary">
                   Detail Kandidat <TbListDetails className="inline text-lg" />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -32,9 +33,9 @@ const Candidate = () => {
               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, perferendis?</p>
 
               <div className="card-actions justify-end">
-                <button className="btn btn-outline btn-primary">
+                <Link href="/candidate/detail/kandidat-2" className="btn btn-outline btn-primary">
                   Detail Kandidat <TbListDetails className="inline text-lg" />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -50,9 +51,9 @@ const Candidate = () => {
               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, perferendis?</p>
 
               <div className="card-actions justify-end">
-                <button className="btn btn-outline btn-primary">
+                <Link href="/candidate/detail/kandidat-3" className="btn btn-outline btn-primary">
                   Detail Kandidat <TbListDetails className="inline text-lg" />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
