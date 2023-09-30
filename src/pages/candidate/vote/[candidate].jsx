@@ -8,6 +8,7 @@ import LoadingButton from "@/components/LoadingButton";
 const VoteCandidate = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const { candidate } = router.query;
 
@@ -29,11 +30,13 @@ const VoteCandidate = () => {
 
     const data = await response.json();
 
-    console.log(data);
-
     if (response.ok) {
       setLoading(false);
+      setError(null);
       router.replace("/candidate/detail/".concat(candidate));
+    } else {
+      setError(data.error);
+      setLoading(false);
     }
   };
 
@@ -85,6 +88,7 @@ const VoteCandidate = () => {
                 </div>
 
                 <div className="p-5">
+                  {error ? <p className="text-red-500 mb-3">{error}</p> : null}
                   {loading ? (
                     <LoadingButton />
                   ) : (

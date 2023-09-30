@@ -9,7 +9,7 @@ const Candidate = () => {
   const { data, isLoading, error } = useSWR("/api/candidate", fetcher);
 
   return (
-    <div className="candidate">
+    <div className="candidate" id="candidates">
       <div className="row flex flex-wrap gap-3 mt-12 justify-center items-center">
         {!data ? (
           <div className="loading loading-spinner loading-lg"></div>

@@ -75,11 +75,10 @@ const CandidateDetail = () => {
                         </div>
                         <div className="stat-title">Total Suara</div>
                         <div className="stat-value text-primary">{data.participants.length}</div>
-                        <div className="stat-desc">21% more than last month</div>
                       </div>
 
-                      <div className="radial-progress text-accent text-xl font-semibold" style={{ "--value": (data.participants.length / participants.length) * 100, "--size": "12rem", "--thickness": "5px" }}>
-                        {((data.participants.length / participants.length) * 100).toString().concat("%")}
+                      <div className="radial-progress text-accent text-xl font-semibold" style={{ "--value": ((data.participants.length / participants.length) * 100 || 0).toFixed(2), "--size": "12rem", "--thickness": "5px" }}>
+                        {((data.participants.length / participants.length) * 100 || 0).toFixed(2)}%
                       </div>
                     </div>
                   </div>

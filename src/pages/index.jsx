@@ -6,6 +6,7 @@ import { FaVoteYea } from "react-icons/fa";
 import Candidate from "@/components/Candidate";
 import Head from "next/head";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,9 +28,9 @@ export default function Home() {
                 <button className="btn btn-primary">
                   Mulai Pemilihan <FaVoteYea className="inline text-lg" />
                 </button>
-                <button className="btn btn-primary btn-outline">
+                <Link href="#candidates" className="btn btn-secondary btn-outline">
                   Lihat Kandidat <BsFillPersonVcardFill className="inline text-lg" />
-                </button>
+                </Link>
               </div>
             </div>
 

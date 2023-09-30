@@ -1,14 +1,15 @@
 import Candidate from "@/models/Candidate";
 import dbConnect from "@/lib/dbConnect";
 import Participant from "@/models/Participant";
+import validateVotes from "@/lib/validateVotes";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     await dbConnect();
 
     try {
-      // Mencari kandidat berdasarkan nama
       const candidate = await Candidate.findOne({ slug: req.body.candidate });
+      await validateVotes(req.body.name);
 
       if (!candidate) {
         return res.status(404).json({ error: "Kandidat tidak ditemukan" });
@@ -26,7 +27,7 @@ export default async function handler(req, res) {
 
       res.status(200).json(newParticipant);
     } catch (error) {
-      res.status(500).json({ error: "Terjadi kesalahan saat memproses permintaan" });
+      res.status(500).json({ error: error.message });
     }
   } else {
     res.status(405).json({ error: "Metode HTTP tidak diizinkan" });
