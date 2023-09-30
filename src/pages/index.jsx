@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { BsFillPersonVcardFill } from "react-icons/bs";
 import { FaVoteYea } from "react-icons/fa";
+import { BiSolidDashboard } from "react-icons/bi";
 import Candidate from "@/components/Candidate";
 import Head from "next/head";
 import Footer from "@/components/Footer";
@@ -25,9 +26,9 @@ export default function Home() {
               <p className="italic my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eos porro et voluptatibus</p>
 
               <div className="button-container flex gap-3">
-                <button className="btn btn-primary">
-                  Mulai Pemilihan <FaVoteYea className="inline text-lg" />
-                </button>
+                <Link href={"/dashboard"} className="btn btn-primary">
+                  Dashboard <BiSolidDashboard className="inline text-lg" />
+                </Link>
                 <Link href="#candidates" className="btn btn-secondary btn-outline">
                   Lihat Kandidat <BsFillPersonVcardFill className="inline text-lg" />
                 </Link>

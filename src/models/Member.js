@@ -16,6 +16,12 @@ const MemberSchema = new Schema(
       type: String,
       required: true,
     },
+
+    voted: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   { timestamps: true }
 );

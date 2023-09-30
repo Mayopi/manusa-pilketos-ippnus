@@ -1,6 +1,15 @@
 import Link from "next/link";
+import useSWR from "swr";
+import { BiSolidDashboard } from "react-icons/bi";
+import { useSession, signOut } from "next-auth/react";
+import { HiLogout } from "react-icons/hi";
+
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 const Navbar = ({ children }) => {
+  const { data, isLoading, isValidating, error } = useSWR("/api/candidate", fetcher);
+  const { data: session, status } = useSession();
+
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -20,36 +29,58 @@ const Navbar = ({ children }) => {
             </Link>
           </div>
           <div className="flex-none hidden lg:block">
-            <ul className="menu menu-horizontal">
-              {/* Navbar menu content here */}
-              <li>
-                <Link href={"/"}>Kandidat 1</Link>
-              </li>
-              <li>
-                <Link href={"/"}>Kandidat 2</Link>
-              </li>
-              <li>
-                <Link href={"/"}>Kandidat 3</Link>
-              </li>
-            </ul>
+            {data && (
+              <ul className="menu menu-horizontal">
+                {data.map((candidate) => (
+                  <li key={candidate._id}>
+                    <Link href={"/candidate/detail/".concat(candidate.slug)}>{candidate.name}</Link>
+                  </li>
+                ))}
+
+                <div className="divider divider-horizontal"></div>
+                <li>
+                  <Link href={"/dashboard"}>
+                    Dashboard <BiSolidDashboard className="inline" />
+                  </Link>
+                </li>
+                {session && status === "authenticated" && (
+                  <li>
+                    <button onClick={() => signOut()}>
+                      Logout <HiLogout className="inline" />
+                    </button>
+                  </li>
+                )}
+              </ul>
+            )}
           </div>
         </div>
         {children}
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200">
-          {/* Sidebar content here */}
-          <li>
-            <Link href={"/"}>Kandidat 1</Link>
-          </li>
-          <li>
-            <Link href={"/"}>Kandidat 2</Link>
-          </li>
-          <li>
-            <Link href={"/"}>Kandidat 3</Link>
-          </li>
-        </ul>
+        {data && (
+          <ul className="menu p-4 w-80 min-h-full bg-base-200">
+            {data.map((candidate) => (
+              <li key={candidate._id}>
+                <Link href={"/candidate/detail/".concat(candidate.slug)}>{candidate.name}</Link>
+              </li>
+            ))}
+
+            <div className="divider"></div>
+            <li>
+              <Link href={"/dashboard"}>
+                Dashboard <BiSolidDashboard className="inline" />
+              </Link>
+            </li>
+            {session && status === "authenticated" && (
+              <li>
+                <button onClick={() => signOut()}>
+                  Logout <HiLogout className="inline" />
+                </button>
+              </li>
+            )}
+          </ul>
+        )}
       </div>
     </div>
   );

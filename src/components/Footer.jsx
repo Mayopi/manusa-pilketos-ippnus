@@ -10,7 +10,7 @@ const Footer = () => {
           SMK MA&apos;ARIF NU 1 AJIBARANG
           <br />
           Providing reliable tech by{" "}
-          <a href="https://instagram.com/mayopi_." className="link link-hover">
+          <a href="https://instagram.com/_mayopi" target="__blank" className="link link-hover">
             mayopi_.
           </a>{" "}
           😋
