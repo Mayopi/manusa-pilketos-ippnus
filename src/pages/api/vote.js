@@ -1,0 +1,31 @@
+import Candidate from "@/models/Candidate";
+import dbConnect from "@/lib/dbConnect";
+import Participant from "@/models/Participant";
+
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    await dbConnect();
+
+    try {
+      // Mencari kandidat berdasarkan nama
+      const candidate = await Candidate.findOne({ slug: req.body.candidate });
+
+      if (!candidate) {
+        return res.status(404).json({ error: "Kandidat tidak ditemukan" });
+      }
+
+      // Membuat peserta baru
+      const newParticipant = await Participant.create(req.body);
+
+      // Menambahkan referensi peserta ke kandidat
+      candidate.participants.push(newParticipant._id);
+      await candidate.save();
+
+      res.status(200).json(newParticipant);
+    } catch (error) {
+      res.status(500).json({ error: "Terjadi kesalahan saat memproses permintaan" });
+    }
+  } else {
+    res.status(405).json({ error: "Metode HTTP tidak diizinkan" });
+  }
+}

@@ -11,9 +11,30 @@ const VoteCandidate = () => {
 
   const { candidate } = router.query;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    const response = await fetch("/api/vote", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nis: e.target.nis.value,
+        name: e.target.name.value,
+        class: e.target.class.value,
+        reason: e.target.reason.value,
+        candidate,
+      }),
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+
+    if (response.ok) {
+      setLoading(false);
+      router.replace("/candidate/detail/".concat(candidate));
+    }
   };
 
   return (
