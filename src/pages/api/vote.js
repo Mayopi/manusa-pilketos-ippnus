@@ -15,7 +15,10 @@ export default async function handler(req, res) {
       }
 
       // Membuat peserta baru
-      const newParticipant = await Participant.create(req.body);
+      const newParticipant = await Participant.create({
+        ...req.body,
+        choice: candidate.position,
+      });
 
       // Menambahkan referensi peserta ke kandidat
       candidate.participants.push(newParticipant._id);

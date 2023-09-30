@@ -21,6 +21,11 @@ const ParticipantSchema = new Schema(
       type: String,
       required: true,
     },
+
+    choice: {
+      type: Number,
+      required: true,
+    },
   },
   { timestamps: true }
 );
