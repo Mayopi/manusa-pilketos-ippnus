@@ -1,3 +1,4 @@
+require("dotenv").config();
 import dbConnect from "@/lib/dbConnect";
 import { seeder } from "@/lib/seeder";
 
