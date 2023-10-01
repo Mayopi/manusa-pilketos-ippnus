@@ -64,6 +64,7 @@ const Login = () => {
               ) : (
                 <button
                   onClick={async () => {
+                    setLoading(true);
                     const { status, data, error } = await signIn("credentials", {
                       username: credentials.username,
                       password: credentials.password,
