@@ -1,8 +1,5 @@
 import mongoose from "mongoose";
-import { seeder } from "./seeder";
 let cached = global.mongoose;
-
-let seederExecuted = false;
 
 if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
@@ -25,10 +22,7 @@ async function dbConnect() {
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then(async (mongoose) => {
       console.log("connected into database");
-      if (!seederExecuted) {
-        await seeder();
-        seederExecuted = true;
-      }
+
       return mongoose;
     });
   }

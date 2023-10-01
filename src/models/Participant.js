@@ -33,7 +33,6 @@ const ParticipantSchema = new Schema(
 let Participant;
 
 if (!models.participant) {
-  console.log(models);
   Participant = model("participant", ParticipantSchema);
 } else {
   Participant = models.participant;

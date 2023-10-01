@@ -22,7 +22,7 @@ const Login = () => {
       </Head>
 
       <Navbar>
-        <main className="px-5 mt-24">
+        <main className="lg:px-5 mt-24">
           <h1 className="font-semibold text-center uppercase text-xl mb-10">Login Menggunakan Akun Anda</h1>
 
           <div className="w-full flex justify-center">

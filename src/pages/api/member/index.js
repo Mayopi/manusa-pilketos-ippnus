@@ -1,7 +1,9 @@
 import Member from "@/models/Member";
+import dbConnect from "@/lib/dbConnect";
 
 export default async function handler(req, res) {
   try {
+    await dbConnect();
     const { voted, unvoted } = req.query;
 
     let data;

@@ -55,7 +55,6 @@ const CandidateSchema = new Schema(
 let Candidate;
 
 if (!models.candidate) {
-  console.log(models);
   Candidate = model("candidate", CandidateSchema);
 } else {
   Candidate = models.candidate;

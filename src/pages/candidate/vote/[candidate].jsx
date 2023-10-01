@@ -48,12 +48,12 @@ const VoteCandidate = () => {
 
       <Navbar>
         {candidate && (
-          <main className="px-5 mt-24">
-            <h1 className="text-center font-semibold uppercase text-xl">
+          <main className="px-5 my-24">
+            <h1 className="text-center font-semibold uppercase text-xl mb-5">
               Anda Sedang Memvoting <span className="text-primary">{candidate.replace("-", " ")}</span>
             </h1>
 
-            <div className="w-full flex justify-center items-center p-5">
+            <div className="w-full flex justify-center items-center lg:p-5 bg-base-200 rounded">
               <form onSubmit={(e) => handleSubmit(e)} className="w-full">
                 <div className="row flex flex-wrap">
                   <div className="form-control w-full lg:w-1/2 p-5">

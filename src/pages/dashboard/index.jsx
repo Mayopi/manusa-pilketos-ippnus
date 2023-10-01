@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { useState } from "react";
+import Footer from "@/components/Footer";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -11,11 +11,7 @@ const Dashboard = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  const { data: voted, isLoading: votedLoading, isValidating: votedValidating, error: votedError } = useSWR("/api/member?voted=true", fetcher);
-
-  const { data: unvoted, isLoading: unvotedLoading, isValidating: unvotedValidating, error: unvotedError } = useSWR("/api/member?unvoted=true", fetcher);
-
-  const { data: members, isLoading: membersLoading, isValidating: membersValidating, error: membersError } = useSWR("/api/member", fetcher);
+  const { data: members, isLoading, isValidating, error } = useSWR("/api/member", fetcher);
 
   if (status === "unauthenticated") router.replace("/login");
   return (
@@ -25,13 +21,13 @@ const Dashboard = () => {
       </Head>
 
       <Navbar>
-        {votedLoading || votedValidating || unvotedLoading || unvotedValidating || membersLoading || membersValidating ? (
+        {isLoading || isValidating || !members ? (
           <div className="loading loading-spinner loading-lg">Loading...</div>
         ) : (
           <main className="px-5 mt-24">
             <h1 className="font-semibold text-center text-xl uppercase -tracking-wider mb-5">Statistika Dasar</h1>
             <div className="row flex flex-wrap">
-              <div className="col p-5 lg:w-1/2 w-full flex justify-center items-center">
+              <div className="col p-5 lg:w-1/2 w-full flex justify-center items-center bg-base-200 rounded">
                 <div className="stats shadow">
                   <div className="stat">
                     <div className="stat-figure text-primary">
@@ -40,7 +36,7 @@ const Dashboard = () => {
                       </svg>
                     </div>
                     <div className="stat-title">Total Suara</div>
-                    <div className="stat-value text-primary">{voted.length}</div>
+                    <div className="stat-value text-primary">{members.filter((member) => member.voted).length}</div>
                   </div>
 
                   <div className="stat">
@@ -50,14 +46,17 @@ const Dashboard = () => {
                       </svg>
                     </div>
                     <div className="stat-title">Sisa Suara</div>
-                    <div className="stat-value text-secondary">{unvoted.length}</div>
+                    <div className="stat-value text-secondary">{members.filter((member) => !member.voted).length}</div>
                   </div>
                 </div>
               </div>
 
-              <div className="col p-5 lg:w-1/2 w-full flex justify-center items-center">
-                <div className="radial-progress text-accent" style={{ "--value": ((voted.length / members.length) * 100 || 0).toFixed(2), "--size": "12rem", "--thickness": "5px" }}>
-                  {((voted.length / members.length) * 100 || 0).toFixed(2)}%
+              <div className="col p-5 lg:w-1/2 w-full flex justify-center items-center bg-base-200 rounded">
+                <div
+                  className="radial-progress text-accent"
+                  style={{ "--value": ((members.filter((member) => member.voted).length / members.filter((member) => !member.voted).length) * 100 || 0).toFixed(2), "--size": "12rem", "--thickness": "5px" }}
+                >
+                  {((members.filter((member) => member.voted).length / members.length) * 100 || 0).toFixed(2)}%
                 </div>
               </div>
             </div>
@@ -65,9 +64,9 @@ const Dashboard = () => {
             <div className="divider"></div>
 
             <div className="row">
-              <div className="col p-5 flex flex-col justify-center items-center w-full">
+              <div className="col flex flex-col justify-center items-center w-full">
                 <h1 className="font-semibold opacity-80 mb-5 text-xl uppercase">Sisa Suara</h1>
-                <div className="overflow-x-auto w-full">
+                <div className="overflow-x-auto w-full bg-base-200 rounded p-3">
                   <table className="table table-zebra">
                     {/* head */}
                     <thead>
@@ -80,21 +79,25 @@ const Dashboard = () => {
                     </thead>
                     <tbody>
                       {/* row 1 */}
-                      {unvoted.map((vote, index) => (
-                        <tr key={index}>
-                          <td>{vote.nis}</td>
-                          <td>{vote.name}</td>
-                          <td>{vote.class}</td>
-                          <td>
-                            <p className="badge badge-warning bg-opacity-20 text-yellow-500">Belum Voting</p>
-                          </td>
-                        </tr>
-                      ))}
+                      {members
+                        .filter((member) => !member.voted)
+                        .map((vote, index) => (
+                          <tr key={index}>
+                            <td>{vote.nis}</td>
+                            <td>{vote.name}</td>
+                            <td>{vote.class}</td>
+                            <td>
+                              <p className="badge badge-warning badge-sm bg-opacity-20 text-yellow-500 text-xs text text-center">Pending</p>
+                            </td>
+                          </tr>
+                        ))}
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
+            <div className="divider"></div>
+            <Footer />
           </main>
         )}
       </Navbar>

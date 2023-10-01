@@ -25,7 +25,7 @@ const CandidateDetail = () => {
         {isLoading || isValidating || !data || isLoadingParticipant || isValidatingParticipant || !participants ? (
           <div className="loading loading-spinner loading-lg">Loading</div>
         ) : (
-          <main className="px-5 mt-24">
+          <main className="px-5 my-24">
             <div className="row flex flex-wrap">
               <div className="col flex flex-col p-5 items-center rounded lg:w-1/3 w-full">
                 <div className="avatar">
