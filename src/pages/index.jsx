@@ -36,15 +36,7 @@ export default function Home() {
             </div>
 
             <div className="col lg:w-1/2 w-full lg:mt-0 mt-10 flex justify-center items-center">
-              <div className="card w-96 bg-base-100 rounded shadow-xl">
-                <figure>
-                  <img src="https://via.placeholder.com/300x150" alt="Shoes" className="rounded" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">Pemilihan Ketua Osis</h2>
-                  <p>Manusa Mengadakan Pemilihan Ketua Osis Periode 2023 - 2024</p>
-                </div>
-              </div>
+              <Image src={"/images/logo-pilketos.png"} height={150} width={400} />
             </div>
           </div>
 
