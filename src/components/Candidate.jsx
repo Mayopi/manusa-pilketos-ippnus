@@ -2,6 +2,7 @@ import { TbListDetails } from "react-icons/tb";
 import Link from "next/link";
 import useSWR from "swr";
 import stringToSlug from "@/lib/stringToSlug";
+import Image from "next/image";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -18,8 +19,14 @@ const Candidate = () => {
             return (
               <div key={candidate._id} className="col flex justify-center items-center lg:w-[32%] w-full my-5">
                 <div className="card w-96 bg-base-100 group rounded shadow-xl cursor-pointer">
-                  <figure>
-                    <img src="https://via.placeholder.com/200" alt="Shoes" className="rounded" />
+                  <figure className="relative">
+                    <Image
+                      src={candidate.name == "Adnan Dhukha A." ? "/images/adnan-dhukha-pose.png" : candidate.name == "Fajar Ardiansyah" ? "/images/fajar-ardiansyah-pose.png" : "/images/rohmatin-lutfiana-pose.png"}
+                      alt="Shoes"
+                      width={200}
+                      height={200}
+                      className="rounded"
+                    />
                   </figure>
                   <div className="card-body">
                     <h2 className="card-title group-hover:text-primary transition">{candidate.name}</h2>

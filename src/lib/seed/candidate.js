@@ -2,44 +2,53 @@ import Candidate from "@/models/Candidate";
 import stringToSlug from "../stringToSlug";
 const candidatesData = [
   {
-    name: "Sopo Jarwo",
+    name: "Adnan Dhukha A.",
     bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, perferendis?",
     profile:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore officia aperiam neque in dolores eaque? Totam ab nemo veniam fugiat minus, explicabo quae vel excepturi tempora sint distinctio neque odit. Corrupti consequuntur reiciendis laboriosam eum temporibus, delectus quia nulla facilis sed corporis obcaecati iure neque architecto impedit dicta labore nemo ab hic, est, modi fugit cum vitae. Iusto sint voluptas officia iure molestiae! Dicta animi, quibusdam repellat illum iure fuga perferendis facilis veniam natus veritatis laudantium fugit molestiae facere explicabo tempore aperiam dolor voluptatem cupiditate est similique omnis culpa cumque. Ducimus hic culpa laborum nam aspernatur quae deleniti quo. Libero!",
-    slug: stringToSlug("Sopo Jarwo"),
-    vision:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, ex. Possimus earum adipisci, odio cumque totam voluptatem. Numquam possimus aspernatur accusantium et eveniet, dolor debitis quis, rerum, asperiores eligendi optio. Dignissimos sed culpa, at rerum necessitatibus amet, provident aperiam incidunt esse cum obcaecati excepturi voluptatibus, enim laudantium voluptatem minus ea!",
-    mission:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium harum, saepe deleniti temporibus esse iusto aperiam adipisci alias dolorem deserunt quaerat consequuntur voluptatum, repellat mollitia dignissimos dolor earum vel est laudantium! Quis, sequi. Non ea sit modi voluptatibus eius illum minima dolor, rem maxime. Assumenda nisi hic, libero, quibusdam totam numquam nostrum reprehenderit atque blanditiis est ipsum veniam error consectetur porro necessitatibus quas aliquam possimus maiores exercitationem molestias ad eligendi mollitia. Esse quaerat ratione aspernatur id culpa explicabo voluptates maiores?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore officia aperiam neque in dolores eaque? Totam ab nemo veniam fugiat minus, explicabo quae vel excepturi tempora sint distinctio neque odit. Corrupti consequuntur reiciendis laboriosam eum temporibus, delectus quia nulla facilis sed corporis obcaecati iure neque architecto impedit dicta labore nemo ab hic, est, modi fugit cum vitae.",
+    slug: stringToSlug("Adnan Dhuka A."),
+    vision: "Menjadikan Organisasi Intra Sekolah SMK Ma'arif NU 1 Ajibarang sebagai wadah Siswa - Siswi untuk meningkatkan kualitas diri serta mengedepankan 4K (Kekeluargaan, Kedisiplinan, Kreativitas, dan Kualitas)",
+    mission: `1. Meningkatkan Keimanan dan ketakwaan terhadap Tuhan YME.
+      2. Mengoptimalkan fungsi osis sebagai penyelenggara atau pendukung kegiatan
+      di sekolah, serta mengadakan kegiatan yang melibatkan seluruh komponen di
+      lingkungan sekolah.
+      3. Menjalin komunikasi yang baik antar pihak internal maupun external dan
+      mengedepankan sopan santun
+      4. Menjalankan dan memodifikasi program kerja terdahulu dengan inovasi
+      sesuai dengan globalisasi serta mengevaluasi setiap kegiatan dan
+      permasalahan`,
     class: "Kelas A",
     position: 1,
     participants: [],
   },
   {
-    name: "Adit Denis",
-    class: "Kelas B",
+    name: "Fajar Ardiansyah",
+    class: "Kelas XI RPL",
     bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, perferendis?",
     profile:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore officia aperiam neque in dolores eaque? Totam ab nemo veniam fugiat minus, explicabo quae vel excepturi tempora sint distinctio neque odit. Corrupti consequuntur reiciendis laboriosam eum temporibus, delectus quia nulla facilis sed corporis obcaecati iure neque architecto impedit dicta labore nemo ab hic, est, modi fugit cum vitae. Iusto sint voluptas officia iure molestiae! Dicta animi, quibusdam repellat illum iure fuga perferendis facilis veniam natus veritatis laudantium fugit molestiae facere explicabo tempore aperiam dolor voluptatem cupiditate est similique omnis culpa cumque. Ducimus hic culpa laborum nam aspernatur quae deleniti quo. Libero!",
-    slug: stringToSlug("Adit Denis"),
-    vision:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, ex. Possimus earum adipisci, odio cumque totam voluptatem. Numquam possimus aspernatur accusantium et eveniet, dolor debitis quis, rerum, asperiores eligendi optio. Dignissimos sed culpa, at rerum necessitatibus amet, provident aperiam incidunt esse cum obcaecati excepturi voluptatibus, enim laudantium voluptatem minus ea!",
-    mission:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium harum, saepe deleniti temporibus esse iusto aperiam adipisci alias dolorem deserunt quaerat consequuntur voluptatum, repellat mollitia dignissimos dolor earum vel est laudantium! Quis, sequi. Non ea sit modi voluptatibus eius illum minima dolor, rem maxime. Assumenda nisi hic, libero, quibusdam totam numquam nostrum reprehenderit atque blanditiis est ipsum veniam error consectetur porro necessitatibus quas aliquam possimus maiores exercitationem molestias ad eligendi mollitia. Esse quaerat ratione aspernatur id culpa explicabo voluptates maiores?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore officia aperiam neque in dolores eaque? Totam ab nemo veniam fugiat minus, explicabo quae vel excepturi tempora sint distinctio neque odit. Corrupti consequuntur reiciendis laboriosam eum temporibus, delectus quia nulla facilis sed corporis obcaecati iure neque architecto impedit dicta labore nemo ab hic, est, modi fugit cum vitae.",
+    slug: stringToSlug("Fajar Ardiansyah"),
+    vision: `1. Menjadikan organisasi osis sebagai tempat aspirasi serta menjadi inspirasi bagi siswa siswi Smk Ma'arif NU 1 Ajibarang
+      2. Menjadikan siswa-siswi Smk Ma'arif NU 1 Ajibarang menjadi pelajar yang produktif dengan mengutamakan ketuhanan Yang Maha Esa.
+      `,
+    mission: `1. Meneruskan dan mengembangkan program kerja Osis, baik yang sudah terlaksana maupun yang belum terlaksana.
+      2. Menyusun program kerja dengan komunikasi yang aktif dan baik antar siswa-siswi Smk Ma'arif NU 1 Ajibarang
+      3. Menumbuhkan sikap yang saling menghormati dan menghargai sesama warga sekolah.`,
     position: 2,
     participants: [],
   },
   {
-    name: "Ultraman GG",
-    class: "Kelas C",
+    name: "Rohmatin Lutfiana",
+    class: "Kelas XI TKJ F",
     bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, perferendis?",
     profile:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore officia aperiam neque in dolores eaque? Totam ab nemo veniam fugiat minus, explicabo quae vel excepturi tempora sint distinctio neque odit. Corrupti consequuntur reiciendis laboriosam eum temporibus, delectus quia nulla facilis sed corporis obcaecati iure neque architecto impedit dicta labore nemo ab hic, est, modi fugit cum vitae. Iusto sint voluptas officia iure molestiae! Dicta animi, quibusdam repellat illum iure fuga perferendis facilis veniam natus veritatis laudantium fugit molestiae facere explicabo tempore aperiam dolor voluptatem cupiditate est similique omnis culpa cumque. Ducimus hic culpa laborum nam aspernatur quae deleniti quo. Libero!",
-    slug: stringToSlug("Ultraman GG"),
-    vision:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, ex. Possimus earum adipisci, odio cumque totam voluptatem. Numquam possimus aspernatur accusantium et eveniet, dolor debitis quis, rerum, asperiores eligendi optio. Dignissimos sed culpa, at rerum necessitatibus amet, provident aperiam incidunt esse cum obcaecati excepturi voluptatibus, enim laudantium voluptatem minus ea!",
-    mission:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium harum, saepe deleniti temporibus esse iusto aperiam adipisci alias dolorem deserunt quaerat consequuntur voluptatum, repellat mollitia dignissimos dolor earum vel est laudantium! Quis, sequi. Non ea sit modi voluptatibus eius illum minima dolor, rem maxime. Assumenda nisi hic, libero, quibusdam totam numquam nostrum reprehenderit atque blanditiis est ipsum veniam error consectetur porro necessitatibus quas aliquam possimus maiores exercitationem molestias ad eligendi mollitia. Esse quaerat ratione aspernatur id culpa explicabo voluptates maiores?",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore officia aperiam neque in dolores eaque? Totam ab nemo veniam fugiat minus, explicabo quae vel excepturi tempora sint distinctio neque odit. Corrupti consequuntur reiciendis laboriosam eum temporibus, delectus quia nulla facilis sed corporis obcaecati iure neque architecto impedit dicta labore nemo ab hic, est, modi fugit cum vitae.",
+    slug: stringToSlug("Rohmatin Lutfiana"),
+    vision: `1. Menjadikan organisasi osis sebagai tempat aspirasi serta menjadi inspirasi bagi siswa siswi SMK Ma'arif NU 1 Ajibarang.
+      2. Menjadikan siswa siswi SMK Ma'arif NU 1 Ajibarang menjadi pelajar yang produktif dengan mengutamakan Ketuhanan Yang Maha Esa.`,
+    mission: `1. Meneruskan dan mengembangkan program kerja Osis, baik yang sudah terlaksana maupun yang belum terlaksana.
+      2. Menyusun program kerja dengan komunikasi yang aktif dan baik antar siswa siswi SMK Ma'arif NU 1 Ajibarang.
+      3. Menumbuhkan sikap yang saling menghormati dan menghargai sesama warga sekolah.`,
     position: 3,
     participants: [],
   },
