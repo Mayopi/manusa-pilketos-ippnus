@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
     try {
       const candidate = await Candidate.findOne({ slug: req.body.candidate });
-      await validateVotes(req.body.name.toUpperCase());
+      await validateVotes(req.body);
 
       if (!candidate) {
         return res.status(404).json({ error: "Kandidat tidak ditemukan" });
