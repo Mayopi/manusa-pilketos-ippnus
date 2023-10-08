@@ -1,29 +1,26 @@
 import Member from "@/models/Member";
+import fs from "fs";
 
-const memberData = [
-  {
-    name: "Eri Danianto",
-    class: "XII RPL",
-    nis: "2113330",
-  },
-
-  {
-    name: "Sela Agus Lestari",
-    class: "XII RPL",
-    nis: "2113331",
-  },
-
-  {
-    name: "Ari Bagus Septianto",
-    class: "XII RPL",
-    nis: "2113332",
-  },
-];
+const rawData = "./public/data/xii.json";
+const memberData = JSON.parse(fs.readFileSync(rawData, { encoding: "utf-8" }));
 
 const memberSeeder = async () => {
   try {
     await Member.deleteMany({});
-    await Member.insertMany(memberData.map((member) => ({ ...member, name: member.name.toUpperCase() })));
+
+    const filteredMemberData = memberData.filter((member) => {
+      // Periksa apakah field 3, 4, dan 5 bukan empty string
+      return member.field3 !== "" && member.field4 !== "" && member.field5 !== "";
+    });
+
+    const mappedMembers = filteredMemberData.map((member) => ({
+      class: member.field3,
+      name: member.field4.toUpperCase(),
+      nis: member.field5,
+    }));
+
+    await Member.insertMany(mappedMembers);
+
     console.log("Successfully seeding members");
   } catch (error) {
     console.log("Failed seeding members", error);

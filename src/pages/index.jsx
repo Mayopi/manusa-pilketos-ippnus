@@ -23,7 +23,7 @@ export default function Home() {
             <div className="col lg:w-1/2 w-full">
               <h1 className="font-bold uppercase lg:text-3xl text-2xl tracking-wider lg:w-[80%]">PERMUDAH PEMILIHAN CALON KETUA OSIS MU!</h1>
 
-              <p className="italic my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eos porro et voluptatibus</p>
+              <p className="italic my-5">&quot;Manusa Pilketos: Suara Anda, Pilihan Terbaik!&quot;</p>
 
               <div className="button-container flex gap-3">
                 <Link href={"/dashboard"} className="btn btn-primary">
