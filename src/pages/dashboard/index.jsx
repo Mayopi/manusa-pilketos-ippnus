@@ -71,6 +71,7 @@ const Dashboard = () => {
                     {/* head */}
                     <thead>
                       <tr>
+                        <th>No</th>
                         <th>NIS</th>
                         <th>Name</th>
                         <th>Class</th>
@@ -83,6 +84,7 @@ const Dashboard = () => {
                         .filter((member) => !member.voted)
                         .map((vote, index) => (
                           <tr key={index}>
+                            <td>{index + 1}</td>
                             <td>{vote.nis}</td>
                             <td>{vote.name}</td>
                             <td>{vote.class}</td>
