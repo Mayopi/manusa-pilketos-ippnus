@@ -1,7 +1,7 @@
 import Member from "@/models/Member";
 import fs from "fs";
 
-const rawData = "./public/data/xii.json";
+const rawData = "public/data/xii.json";
 const memberData = JSON.parse(fs.readFileSync(rawData, { encoding: "utf-8" }));
 
 const memberSeeder = async () => {
