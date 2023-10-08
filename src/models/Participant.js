@@ -30,6 +30,15 @@ const ParticipantSchema = new Schema(
   { timestamps: true }
 );
 
+ParticipantSchema.pre("save", function (next) {
+  try {
+    this.name = this.name.toUpperCase();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 let Participant;
 
 if (!models.participant) {

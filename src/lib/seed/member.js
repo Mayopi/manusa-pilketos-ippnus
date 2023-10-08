@@ -23,7 +23,7 @@ const memberData = [
 const memberSeeder = async () => {
   try {
     await Member.deleteMany({});
-    await Member.insertMany(memberData);
+    await Member.insertMany(memberData.map((member) => ({ ...member, name: member.name.toUpperCase() })));
     console.log("Successfully seeding members");
   } catch (error) {
     console.log("Failed seeding members", error);

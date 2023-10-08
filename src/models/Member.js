@@ -26,6 +26,15 @@ const MemberSchema = new Schema(
   { timestamps: true }
 );
 
+MemberSchema.pre("save", function (next) {
+  try {
+    this.name = this.name.toUpperCase();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 let Member;
 
 if (!models.member) {

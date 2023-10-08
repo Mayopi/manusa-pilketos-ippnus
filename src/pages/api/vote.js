@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
     try {
       const candidate = await Candidate.findOne({ slug: req.body.candidate });
-      await validateVotes(req.body.name);
+      await validateVotes(req.body.name.toUpperCase());
 
       if (!candidate) {
         return res.status(404).json({ error: "Kandidat tidak ditemukan" });
@@ -18,6 +18,7 @@ export default async function handler(req, res) {
       // Membuat peserta baru
       const newParticipant = await Participant.create({
         ...req.body,
+        name: req.body.name.toUpperCase(),
         choice: candidate.position,
       });
 
