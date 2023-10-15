@@ -4,12 +4,15 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Footer from "@/components/Footer";
+import { BsFilter } from "react-icons/bs";
+import { useState } from "react";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 const Dashboard = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const [filterMember, setFilterMember] = useState("all");
 
   const { data: members, isLoading, isValidating, error } = useSWR("/api/member", fetcher);
 
@@ -66,6 +69,30 @@ const Dashboard = () => {
             <div className="row">
               <div className="col flex flex-col justify-center items-center w-full">
                 <h1 className="font-semibold opacity-80 mb-5 text-xl uppercase">Sisa Suara</h1>
+
+                <div className="w-full flex gap-2 flex-wrap">
+                  <BsFilter className="text-4xl" />
+                  <div className="dropdown">
+                    <label tabIndex={0} className="btn m-1">
+                      {filterMember == "all" ? "Class" : filterMember}
+                    </label>
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 border rounded-box w-52 flex flex-col gap-1">
+                      <li>
+                        <button className={`btn ${filterMember == "all" ? "btn-disabled" : ""}`} onClick={() => setFilterMember("all")}>
+                          All
+                        </button>
+                      </li>
+                      {[...new Set(members.map((member) => member.class))].map((classValue) => (
+                        <li>
+                          <button className={`btn ${filterMember == classValue ? "btn-disabled" : ""}  `} onClick={() => setFilterMember(classValue)}>
+                            {classValue}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
                 <div className="overflow-x-auto w-full bg-base-200 rounded p-3">
                   <table className="table table-zebra">
                     {/* head */}
@@ -81,7 +108,13 @@ const Dashboard = () => {
                     <tbody>
                       {/* row 1 */}
                       {members
-                        .filter((member) => !member.voted)
+                        .filter((member) => {
+                          if (filterMember == "all") {
+                            return !member.voted;
+                          } else {
+                            return !member.voted && member.class == filterMember;
+                          }
+                        })
                         .map((vote, index) => (
                           <tr key={index}>
                             <td>{index + 1}</td>

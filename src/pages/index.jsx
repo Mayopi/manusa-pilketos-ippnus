@@ -44,9 +44,8 @@ export default function Home() {
 
           <Candidate />
         </main>
+        <Footer />
       </Navbar>
-
-      <Footer />
     </>
   );
 }
