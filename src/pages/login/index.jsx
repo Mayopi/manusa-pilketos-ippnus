@@ -72,10 +72,9 @@ const Login = () => {
                       callbackUrl: "/dashboard",
                     });
 
-                    console.log(status, data, error);
-
                     if (error) {
                       setError(error);
+                      setLoading(false);
                     }
                   }}
                   className="btn btn-primary uppercase tracking-wider w-full mt-5"
