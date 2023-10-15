@@ -82,8 +82,8 @@ const Dashboard = () => {
                           All
                         </button>
                       </li>
-                      {[...new Set(members.map((member) => member.class))].map((classValue) => (
-                        <li>
+                      {[...new Set(members.map((member) => member.class))].map((classValue, index) => (
+                        <li key={index}>
                           <button className={`btn ${filterMember == classValue ? "btn-disabled" : ""}  `} onClick={() => setFilterMember(classValue)}>
                             {classValue}
                           </button>
