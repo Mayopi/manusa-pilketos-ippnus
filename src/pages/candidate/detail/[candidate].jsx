@@ -60,7 +60,7 @@ const CandidateDetail = () => {
               <div className="col justify-center w-full lg:w-2/3 prose lg:prose-lg">
                 <div className="biodata w-full">
                   <h3 className="font-semibold opacity-80 text-xl mb-5">Biodata Diri</h3>
-                  <p>{data.profile}</p>
+                  <p dangerouslySetInnerHTML={{ __html: data.profile }}></p>
                 </div>
 
                 <div className="divider uppercase text-lg font-semibold">Visi Misi Untuk Manusa</div>
