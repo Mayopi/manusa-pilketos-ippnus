@@ -13,15 +13,14 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 const Dashboard = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [filterMember, setFilterMember] = useState("all");
+  const [filterMember, setFilterMember] = useState({ class: "all", status: "all" });
 
   const { data: members, isLoading, isValidating, error } = useSWR("/api/member", fetcher);
   const { data: candidates, isLoading: candidateLoading, isValidating: candidateValidating, error: candidateError } = useSWR("/api/candidate", fetcher);
 
   const { data: participants, isLoading: isLoadingParticipant, isValidating: isValidatingParticipant, error: errorParticipant } = useSWR("/api/participant", fetcher);
 
-  console.log(candidates);
-  console.log(participants);
+  console.log(filterMember);
 
   if (status === "unauthenticated") router.replace("/login");
   return (
@@ -107,25 +106,50 @@ const Dashboard = () => {
               <div className="col flex flex-col justify-center items-center w-full">
                 <h1 className="font-semibold opacity-80 mb-5 text-xl uppercase">Sisa Suara</h1>
 
-                <div className="w-full flex gap-2 flex-wrap">
-                  <BsFilter className="text-4xl" />
+                <div className="w-full flex gap-2 flex-wrap my-5">
+                  <h1 className="font-semibold opacity-80 mb-5 text-xl uppercase">
+                    Filter <BsFilter className="text-4xl inline" />
+                  </h1>
                   <div className="dropdown">
-                    <label tabIndex={0} className="btn m-1">
-                      {filterMember == "all" ? "Class" : filterMember}
+                    <label tabIndex={0} className="btn btn-primary m-1">
+                      {filterMember.class == "all" ? "Class" : filterMember.class}
                     </label>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 border rounded-box w-52 flex flex-col gap-1">
                       <li>
-                        <button className={`btn ${filterMember == "all" ? "btn-disabled" : ""}`} onClick={() => setFilterMember("all")}>
+                        <button className={`btn ${filterMember == "all" ? "btn-disabled" : ""}`} onClick={() => setFilterMember({ ...filterMember, class: "all" })}>
                           All
                         </button>
                       </li>
                       {[...new Set(members.map((member) => member.class))].map((classValue, index) => (
                         <li key={index}>
-                          <button className={`btn ${filterMember == classValue ? "btn-disabled" : ""}  `} onClick={() => setFilterMember(classValue)}>
+                          <button className={`btn ${filterMember.class == classValue ? "btn-disabled" : ""}  `} onClick={() => setFilterMember({ ...filterMember, class: classValue })}>
                             {classValue}
                           </button>
                         </li>
                       ))}
+                    </ul>
+                  </div>
+
+                  <div className="dropdown">
+                    <label tabIndex={0} className="btn btn-primary m-1">
+                      {filterMember.status == "all" ? "Status" : filterMember.status}
+                    </label>
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 border rounded-box w-52 flex flex-col gap-1">
+                      <li>
+                        <button className={`btn ${filterMember.status == "all" ? "btn-disabled" : ""}`} onClick={() => setFilterMember({ ...filterMember, status: "all" })}>
+                          All
+                        </button>
+                      </li>
+                      <li>
+                        <button className={`btn ${filterMember.status == "pending" ? "btn-disabled" : ""}`} onClick={() => setFilterMember({ ...filterMember, status: "pending" })}>
+                          Pending
+                        </button>
+                      </li>
+                      <li>
+                        <button className={`btn ${filterMember.status == "selesai" ? "btn-disabled" : ""}`} onClick={() => setFilterMember({ ...filterMember, status: "selesai" })}>
+                          Selesai
+                        </button>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -146,12 +170,26 @@ const Dashboard = () => {
                       {/* row 1 */}
                       {members
                         .filter((member) => {
-                          if (filterMember == "all") {
-                            return !member.voted;
-                          } else {
-                            return !member.voted && member.class == filterMember;
+                          if (filterMember.class === "all") {
+                            if (filterMember.status === "all") {
+                              return true; // Tampilkan semua
+                            } else if (filterMember.status === "pending") {
+                              return !member.voted; // Tampilkan yang belum selesai
+                            } else if (filterMember.status === "selesai") {
+                              return member.voted; // Tampilkan yang selesai
+                            }
+                          } else if (filterMember.class === member.class) {
+                            if (filterMember.status === "all") {
+                              return true; // Tampilkan semua untuk kelas tertentu
+                            } else if (filterMember.status === "pending") {
+                              return !member.voted; // Tampilkan yang belum selesai untuk kelas tertentu
+                            } else if (filterMember.status === "selesai") {
+                              return member.voted; // Tampilkan yang selesai untuk kelas tertentu
+                            }
                           }
+                          return false; // Sisanya tidak ditampilkan
                         })
+
                         .map((vote, index) => (
                           <tr key={index}>
                             <td>{index + 1}</td>
@@ -159,7 +197,11 @@ const Dashboard = () => {
                             <td>{vote.name}</td>
                             <td>{vote.class}</td>
                             <td>
-                              <p className="badge badge-warning badge-sm bg-opacity-20 text-yellow-500 text-xs text text-center">Pending</p>
+                              {vote.voted ? (
+                                <p className="badge badge-success badge-sm bg-opacity-20 text-green-500 text-xs text text-center">Selesai</p>
+                              ) : (
+                                <p className="badge badge-warning badge-sm bg-opacity-20 text-yellow-500 text-xs text text-center">Pending</p>
+                              )}
                             </td>
                           </tr>
                         ))}
