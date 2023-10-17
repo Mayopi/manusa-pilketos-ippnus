@@ -22,13 +22,11 @@ const CandidateSchema = new Schema(
     },
 
     vision: {
-      type: String,
-      required: true,
+      type: [],
     },
 
     mission: {
-      type: String,
-      required: true,
+      type: [],
     },
 
     class: {

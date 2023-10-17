@@ -59,7 +59,7 @@ const CandidateDetail = () => {
                 </Link>
               </div>
 
-              <div className="col justify-center w-full lg:w-2/3">
+              <div className="col justify-center w-full lg:w-2/3 prose lg:prose-lg">
                 <div className="biodata w-full">
                   <h3 className="font-semibold opacity-80 text-xl mb-5">Biodata Diri</h3>
                   <p>{data.profile}</p>
@@ -67,14 +67,21 @@ const CandidateDetail = () => {
 
                 <div className="divider uppercase text-lg font-semibold">Visi Misi Untuk Manusa</div>
 
-                <div className="visi-misi">
+                <div className="visi-misi prose lg:prose-lg">
                   <h3 className="font-semibold opacity-80 text-xl mb-5">Visi</h3>
-                  <p>{data.vision}</p>
+                  <ol>
+                    {data.vision.map((vision) => (
+                      <li>{vision}</li>
+                    ))}
+                  </ol>
+                  <h3 className="font-semibold opacity-80 text-xl my-5">Misi</h3>
+
+                  <ol>
+                    {data.mission.map((mission) => (
+                      <li>{mission}</li>
+                    ))}
+                  </ol>
                 </div>
-
-                <h3 className="font-semibold opacity-80 text-xl my-5">Misi</h3>
-
-                <p>{data.mission}</p>
               </div>
             </div>
           </main>
