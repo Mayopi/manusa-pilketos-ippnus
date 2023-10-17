@@ -6,6 +6,7 @@ import useSWR from "swr";
 import Footer from "@/components/Footer";
 import { BsFilter } from "react-icons/bs";
 import { useState } from "react";
+import Image from "next/image";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -15,6 +16,12 @@ const Dashboard = () => {
   const [filterMember, setFilterMember] = useState("all");
 
   const { data: members, isLoading, isValidating, error } = useSWR("/api/member", fetcher);
+  const { data: candidates, isLoading: candidateLoading, isValidating: candidateValidating, error: candidateError } = useSWR("/api/candidate", fetcher);
+
+  const { data: participants, isLoading: isLoadingParticipant, isValidating: isValidatingParticipant, error: errorParticipant } = useSWR("/api/participant", fetcher);
+
+  console.log(candidates);
+  console.log(participants);
 
   if (status === "unauthenticated") router.replace("/login");
   return (
@@ -24,7 +31,7 @@ const Dashboard = () => {
       </Head>
 
       <Navbar>
-        {isLoading || isValidating || !members ? (
+        {isLoading || isValidating || !members || !candidates || candidateLoading || candidateValidating || !participants || isLoadingParticipant || isValidatingParticipant ? (
           <div className="loading loading-spinner loading-lg">Loading...</div>
         ) : (
           <main className="px-5 mt-24">
@@ -62,6 +69,36 @@ const Dashboard = () => {
                   {((members.filter((member) => member.voted).length / members.length) * 100 || 0).toFixed(2)}%
                 </div>
               </div>
+            </div>
+
+            <div className="divider"></div>
+
+            <h1 className="font-semibold text-center text-xl uppercase -tracking-wider mb-5">Statistika Kandidat</h1>
+
+            <div className="row flex flex-wrap">
+              {candidates.map((candidate, index) => (
+                <div key={index} className="col w-full lg:w-1/3 p-5">
+                  <div className="card bg-base-200 shadow-xl">
+                    <div className="card-body flex flex-col justify-center items-center">
+                      <div className="avatar">
+                        <div className="w-16 rounded-full border">
+                          <Image
+                            src={candidate.name == "Adnan Dhukha A." ? "/images/adnan-dhukha-profile.png" : candidate.name == "Fajar Ardiansyah" ? "/images/fajar-ardiansyah-profile.png" : "/images/rohmatin-lutfiana-profile.png"}
+                            width={80}
+                            height={80}
+                          />
+                        </div>
+                      </div>
+
+                      <h3 className="uppercase text-lg my-3">{candidate.name}</h3>
+
+                      <div className="radial-progress text-primary" style={{ "--value": ((candidate.participants.length / participants.length) * 100 || 0).toFixed(2) }}>
+                        {((candidate.participants.length / participants.length) * 100 || 0).toFixed(2)}%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <div className="divider"></div>

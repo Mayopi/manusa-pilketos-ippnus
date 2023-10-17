@@ -15,15 +15,13 @@ const CandidateDetail = () => {
 
   const { data, isLoading, isValidating, error } = useSWR(candidate ? `/api/candidate/${candidate}` : null, fetcher);
 
-  const { data: participants, isLoading: isLoadingParticipant, isValidating: isValidatingParticipant, error: errorParticipant } = useSWR("/api/participant", fetcher);
-
   return (
     <>
       <Head>
         <title>{candidate ? candidate.replace("-", " ") : "Loading..."}</title>
       </Head>
       <Navbar>
-        {isLoading || isValidating || !data || isLoadingParticipant || isValidatingParticipant || !participants ? (
+        {isLoading || isValidating || !data ? (
           <div className="loading loading-spinner loading-lg"></div>
         ) : (
           <main className="px-5 my-24">
@@ -70,15 +68,15 @@ const CandidateDetail = () => {
                 <div className="visi-misi prose lg:prose-lg">
                   <h3 className="font-semibold opacity-80 text-xl mb-5">Visi</h3>
                   <ol>
-                    {data.vision.map((vision) => (
-                      <li>{vision}</li>
+                    {data.vision.map((vision, index) => (
+                      <li key={index}>{vision}</li>
                     ))}
                   </ol>
                   <h3 className="font-semibold opacity-80 text-xl my-5">Misi</h3>
 
                   <ol>
-                    {data.mission.map((mission) => (
-                      <li>{mission}</li>
+                    {data.mission.map((mission, index) => (
+                      <li key={index}>{mission}</li>
                     ))}
                   </ol>
                 </div>
