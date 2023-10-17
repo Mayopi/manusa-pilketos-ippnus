@@ -154,7 +154,7 @@ const memberData = [
   },
   {
     field4: "Yusuf",
-    field3: "Xl TBSM C",
+    field3: "XI TBSM C",
     field5: "2214214",
   },
   {
