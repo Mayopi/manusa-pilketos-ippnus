@@ -60,34 +60,10 @@ const CandidateDetail = () => {
               </div>
 
               <div className="col justify-center w-full lg:w-2/3">
-                <header className="w-full flex flex-wrap justify-between">
-                  <div className="biodata lg:w-1/3 w-full">
-                    <h3 className="font-semibold opacity-80 text-xl mb-5">Biodata Diri</h3>
-                    <p>{data.profile}</p>
-                  </div>
-
-                  <div className="divider divider-horizontal"></div>
-
-                  <div className="votings lg:w-1/3 w-full lg:mt-0 mt-5">
-                    <h3 className="font-semibold opacity-80 text-xl mb-5">Total Suara Kandidat</h3>
-
-                    <div className="stats shadow flex items-center justify-center flex-col gap-3">
-                      <div className="stat">
-                        <div className="stat-figure text-primary">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                          </svg>
-                        </div>
-                        <div className="stat-title">Total Suara</div>
-                        <div className="stat-value text-primary">{data.participants.length}</div>
-                      </div>
-
-                      <div className="radial-progress text-accent text-xl font-semibold" style={{ "--value": ((data.participants.length / participants.length) * 100 || 0).toFixed(2), "--size": "12rem", "--thickness": "5px" }}>
-                        {((data.participants.length / participants.length) * 100 || 0).toFixed(2)}%
-                      </div>
-                    </div>
-                  </div>
-                </header>
+                <div className="biodata w-full">
+                  <h3 className="font-semibold opacity-80 text-xl mb-5">Biodata Diri</h3>
+                  <p>{data.profile}</p>
+                </div>
 
                 <div className="divider uppercase text-lg font-semibold">Visi Misi Untuk Manusa</div>
 
