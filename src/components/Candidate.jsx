@@ -34,7 +34,7 @@ const Candidate = () => {
 
                     <div className="card-actions justify-end">
                       <Link href={`/candidate/detail/${candidate.slug}`} className="btn btn-outline btn-primary">
-                        Detail Kandidat <TbListDetails className="inline text-lg" />
+                        Vote Kandidat <TbListDetails className="inline text-lg" />
                       </Link>
                     </div>
                   </div>
