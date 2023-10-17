@@ -22,8 +22,6 @@ const VoteCandidate = () => {
       body: JSON.stringify({
         nis: e.target.nis.value,
         name: e.target.name.value,
-        class: e.target.class.value,
-        reason: e.target.reason.value,
         candidate,
       }),
     });
@@ -68,22 +66,6 @@ const VoteCandidate = () => {
                       <span className="label-text">Masukkan Nama Anda</span>
                     </label>
                     <input type="text" placeholder="Type here" className="input input-bordered w-full" name="name" />
-                  </div>
-                </div>
-
-                <div className="row flex flex-wrap">
-                  <div className="form-control w-full lg:w-1/2 p-5">
-                    <label className="label">
-                      <span className="label-text">Masukkan Kelas Anda</span>
-                    </label>
-                    <input type="text" placeholder="Type here" className="input input-bordered w-full" name="class" />
-                  </div>
-
-                  <div className="form-control w-full lg:w-1/2 p-5">
-                    <label className="label">
-                      <span className="label-text">Alasan Voting</span>
-                    </label>
-                    <textarea className="textarea textarea-bordered" placeholder="Alasan Voting" name="reason"></textarea>
                   </div>
                 </div>
 

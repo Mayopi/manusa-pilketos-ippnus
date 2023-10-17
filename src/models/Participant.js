@@ -12,16 +12,6 @@ const ParticipantSchema = new Schema(
       required: true,
     },
 
-    class: {
-      type: String,
-      required: true,
-    },
-
-    reason: {
-      type: String,
-      required: true,
-    },
-
     choice: {
       type: Number,
       required: true,
