@@ -4,11 +4,21 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { MdHowToVote } from "react-icons/md";
 import LoadingButton from "@/components/LoadingButton";
+import Toast from "@/components/Toast";
 
 const VoteCandidate = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showToast, setShowToast] = useState(false);
+
+  const handleShowToast = () => {
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+      router.replace("/candidate/detail/".concat(candidate));
+    }, 3000);
+  };
 
   const { candidate } = router.query;
 
@@ -31,7 +41,7 @@ const VoteCandidate = () => {
     if (response.ok) {
       setLoading(false);
       setError(null);
-      router.replace("/candidate/detail/".concat(candidate));
+      handleShowToast();
     } else {
       setError(data.error);
       setLoading(false);
@@ -45,6 +55,7 @@ const VoteCandidate = () => {
       </Head>
 
       <Navbar>
+        {showToast && <Toast message={"Suara berhasil dikirim"} show={showToast} />}
         {candidate && (
           <main className="px-5 my-24">
             <h1 className="text-center font-semibold uppercase text-xl mb-5">

@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { BsFillPersonVcardFill } from "react-icons/bs";
-import { FaVoteYea } from "react-icons/fa";
 import { BiSolidDashboard } from "react-icons/bi";
 import Candidate from "@/components/Candidate";
 import Head from "next/head";
