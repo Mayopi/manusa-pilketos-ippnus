@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { BsFilter } from "react-icons/bs";
 import { useState } from "react";
 import Image from "next/image";
+import { RiVoiceRecognitionFill, RiVoiceRecognitionLine } from "react-icons/ri";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -19,8 +20,6 @@ const Dashboard = () => {
   const { data: candidates, isLoading: candidateLoading, isValidating: candidateValidating, error: candidateError } = useSWR("/api/candidate", fetcher);
 
   const { data: participants, isLoading: isLoadingParticipant, isValidating: isValidatingParticipant, error: errorParticipant } = useSWR("/api/participant", fetcher);
-
-  console.log(filterMember);
 
   if (status === "unauthenticated") router.replace("/login");
   return (
@@ -40,9 +39,7 @@ const Dashboard = () => {
                 <div className="stats shadow">
                   <div className="stat">
                     <div className="stat-figure text-primary">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                      </svg>
+                      <RiVoiceRecognitionFill className="text-3xl" />
                     </div>
                     <div className="stat-title">Total Suara</div>
                     <div className="stat-value text-primary">{members.filter((member) => member.voted).length}</div>
@@ -50,9 +47,7 @@ const Dashboard = () => {
 
                   <div className="stat">
                     <div className="stat-figure text-secondary">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                      </svg>
+                      <RiVoiceRecognitionLine className="text-3xl" />
                     </div>
                     <div className="stat-title">Sisa Suara</div>
                     <div className="stat-value text-secondary">{members.filter((member) => !member.voted).length}</div>
