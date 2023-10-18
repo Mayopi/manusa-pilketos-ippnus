@@ -1,4 +1,4 @@
-const memberData = [
+const xiiData = [
   {
     "DAFTAR NAMA SISWA TAHUN PELAJARAN 2022/2023": "XII TAV-1",
     field2: "1",
@@ -9059,4 +9059,4 @@ const memberData = [
   },
 ];
 
-export { memberData };
+export { xiiData };
