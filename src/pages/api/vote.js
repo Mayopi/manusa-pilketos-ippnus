@@ -20,6 +20,7 @@ export default async function handler(req, res) {
         ...req.body,
         name: req.body.name.toUpperCase(),
         choice: candidate.position,
+        voteRole: candidate.role,
       });
 
       // Menambahkan referensi peserta ke kandidat

@@ -16,6 +16,11 @@ const ParticipantSchema = new Schema(
       type: Number,
       required: true,
     },
+
+    voteRole: {
+      type: String,
+      required: true,
+    }
   },
   { timestamps: true }
 );
