@@ -40,7 +40,7 @@ const Dashboard = () => {
       ) : (
         <Navbar>
           <main className="px-5 mt-24">
-            <h1 className="font-semibold text-center text-xl uppercase -tracking-wider mb-5">Statistika Dasar</h1>
+            <h1 className="font-semibold text-center text-xl uppercase -tracking-wider mb-5">Statistika Dasar OSIS</h1>
             <div className="row flex flex-wrap">
               <div className="col p-5 lg:w-1/2 w-full flex justify-center items-center bg-base-200 rounded">
                 <div className="stats shadow">
