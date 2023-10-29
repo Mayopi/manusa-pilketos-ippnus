@@ -18,7 +18,7 @@ const CandidateSchema = new Schema(
 
     profile: {
       type: String,
-      required: true,
+      required: false,
     },
 
     vision: {
@@ -36,6 +36,11 @@ const CandidateSchema = new Schema(
 
     position: {
       type: Number,
+      required: true,
+    },
+
+    role: {
+      type: String,
       required: true,
     },
 

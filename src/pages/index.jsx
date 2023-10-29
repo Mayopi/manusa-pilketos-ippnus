@@ -3,7 +3,9 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { BsFillPersonVcardFill } from "react-icons/bs";
 import { BiSolidDashboard } from "react-icons/bi";
-import Candidate from "@/components/Candidate";
+import CandidateOsis from "@/components/CandidateOsis";
+import CandidateIpnus from "@/components/CandidateIpnus";
+import CandidateIppnus from "@/components/CandidateIppnus";
 import Head from "next/head";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -40,8 +42,11 @@ export default function Home() {
           </div>
 
           <div className="divider uppercase font-semibold text-xl">Calon Ketua Osis</div>
-
-          <Candidate />
+          <CandidateOsis />
+          <div className="divider uppercase font-semibold text-xl">Calon Ketua IPNU</div>
+          <CandidateIpnus />
+          <div className="divider uppercase font-semibold text-xl">Calon Ketua IPPNU</div>
+          <CandidateIppnus />
         </main>
         <Footer />
       </Navbar>

@@ -31,7 +31,21 @@ const CandidateDetail = () => {
                 <div className="avatar">
                   <div className="w-24 rounded-full border">
                     <Image
-                      src={data.name == "Adnan Dhukha A." ? "/images/adnan-dhukha-profile.png" : data.name == "Fajar Ardiansyah" ? "/images/fajar-ardiansyah-profile.png" : "/images/rohmatin-lutfiana-profile.png"}
+                      src={
+                        data.name == "Adnan Dhukha A."
+                          ? "/images/adnan-dhukha-profile.png"
+                          : data.name == "Fajar Ardiansyah"
+                          ? "/images/fajar-ardiansyah-profile.png"
+                          : data.name == "Rohmatin Lutfiana"
+                          ? "/images/rohmatin-lutfiana-profile.png"
+                          : data.name == "Anggit Setiadi"
+                          ? "/images/anggit-setiadi-profile.png"
+                          : data.name == "Iqmal Maulana"
+                          ? "/images/iqmal-maulana-profile.png"
+                          : data.name == "Berliana Zahra Pramudhita"
+                          ? "/images/berliana-zahra-profile.png"
+                          : "/images/shofia-qutrotunnada-profile.png"
+                      }
                       width={80}
                       height={80}
                     />
@@ -59,10 +73,12 @@ const CandidateDetail = () => {
               </div>
 
               <div className="col justify-center w-full lg:w-2/3 prose lg:prose-lg">
-                <div className="biodata w-full">
-                  <h3 className="font-semibold opacity-80 text-xl mb-5">Biodata Diri</h3>
-                  <p dangerouslySetInnerHTML={{ __html: data.profile }}></p>
-                </div>
+                {data.profile && (
+                  <div className="biodata w-full">
+                    <h3 className="font-semibold opacity-80 text-xl mb-5">Biodata Diri</h3>
+                    <p dangerouslySetInnerHTML={{ __html: data.profile }}></p>
+                  </div>
+                )}
 
                 <div className="divider uppercase text-lg font-semibold">Visi Misi Untuk Manusa</div>
 
