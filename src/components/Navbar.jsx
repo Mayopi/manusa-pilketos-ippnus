@@ -25,7 +25,7 @@ const Navbar = ({ children }) => {
           </div>
           <div className="flex-1 px-2 mx-2">
             <Link href="/" className="btn btn-ghost">
-              Manusa Pilketos Ippnus
+              Manusa Pilketos Ippnu
             </Link>
           </div>
           <div className="flex-none hidden lg:block">
