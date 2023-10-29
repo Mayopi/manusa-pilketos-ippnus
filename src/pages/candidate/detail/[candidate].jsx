@@ -6,6 +6,7 @@ import { FaVoteYea, FaTwitter } from "react-icons/fa";
 import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
 import useSWR from "swr";
 import Image from "next/image";
+import Loading from "@/components/Loading";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -20,10 +21,10 @@ const CandidateDetail = () => {
       <Head>
         <title>{candidate ? candidate.replace("-", " ") : "Loading..."}</title>
       </Head>
-      <Navbar>
-        {isLoading || isValidating || !data ? (
-          <div className="loading loading-spinner loading-lg"></div>
-        ) : (
+      {isLoading || isValidating || !data ? (
+        <Loading />
+      ) : (
+        <Navbar>
           <main className="px-5 my-24">
             <div className="row flex flex-wrap">
               <div className="col flex flex-col p-5 items-center rounded lg:w-1/3 w-full">
@@ -83,8 +84,8 @@ const CandidateDetail = () => {
               </div>
             </div>
           </main>
-        )}
-      </Navbar>
+        </Navbar>
+      )}
     </>
   );
 };

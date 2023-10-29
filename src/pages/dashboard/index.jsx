@@ -8,6 +8,7 @@ import { BsFilter } from "react-icons/bs";
 import { useState } from "react";
 import Image from "next/image";
 import { RiVoiceRecognitionFill, RiVoiceRecognitionLine } from "react-icons/ri";
+import Loading from "@/components/Loading";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -28,10 +29,10 @@ const Dashboard = () => {
         <title>Dashboard</title>
       </Head>
 
-      <Navbar>
-        {isLoading || isValidating || !members || !candidates || candidateLoading || candidateValidating || !participants || isLoadingParticipant || isValidatingParticipant ? (
-          <div className="loading loading-spinner loading-lg">Loading...</div>
-        ) : (
+      {isLoading || isValidating || !members || !candidates || candidateLoading || candidateValidating || !participants || isLoadingParticipant || isValidatingParticipant ? (
+        <Loading />
+      ) : (
+        <Navbar>
           <main className="px-5 mt-24">
             <h1 className="font-semibold text-center text-xl uppercase -tracking-wider mb-5">Statistika Dasar</h1>
             <div className="row flex flex-wrap">
@@ -208,8 +209,8 @@ const Dashboard = () => {
             <div className="divider"></div>
             <Footer />
           </main>
-        )}
-      </Navbar>
+        </Navbar>
+      )}
     </>
   );
 };
