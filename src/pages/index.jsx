@@ -34,7 +34,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col lg:w-1/2 w-full lg:mt-0 mt-10 flex justify-center items-center">
+            <div className="col lg:w-1/2 w-full lg:mt-0 mt-10 flex justify-center items-center bg-base-200 rounded-lg">
               <Image src={"/images/logo-pilketos.png"} height={150} width={400} />
             </div>
           </div>
