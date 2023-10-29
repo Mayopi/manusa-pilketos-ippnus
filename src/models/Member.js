@@ -18,9 +18,16 @@ const MemberSchema = new Schema(
     },
 
     voted: {
-      type: Boolean,
-      required: true,
-      default: false,
+      osis: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
+      ippnus: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
     },
   },
   { timestamps: true }
