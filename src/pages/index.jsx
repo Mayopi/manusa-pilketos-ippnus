@@ -22,7 +22,7 @@ export default function Home() {
         <main className={`px-5 ${inter.className} mt-24`}>
           <div className="hero-section row flex flex-wrap">
             <div className="col lg:w-1/2 w-full">
-              <h1 className="font-bold uppercase lg:text-3xl text-2xl tracking-wider lg:w-[80%]">PERMUDAH PEMILIHAN CALON KETUA OSIS, IPNU DAN IPPNU MU!</h1>
+              <h1 className="font-bold uppercase lg:text-3xl text-2xl tracking-wider lg:w-[80%]">PERMUDAH PEMILIHAN CALON KETUA OSIS DAN IPNU - IPPNU MU!</h1>
 
               <p className="italic my-5">&quot;Manusa Pilketos Ippnu: Suara Anda, Pilihan Terbaik!&quot;</p>
 
