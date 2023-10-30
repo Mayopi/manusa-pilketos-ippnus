@@ -128,6 +128,9 @@ const Dashboard = () => {
                         <div className="radial-progress text-primary" style={{ "--value": ((candidate.participants.length / participants.filter((participant) => participant.voteRole == "OSIS").length) * 100 || 0).toFixed(2) }}>
                           {((candidate.participants.length / participants.filter((participant) => participant.voteRole == "OSIS").length) * 100 || 0).toFixed(2)}%
                         </div>
+
+                        <p className="font-semibold uppercase text-center text-lg my-3">Suara Terkumpul</p>
+                        <p className="font-semibold uppercase text-center text-xl text-accent">{candidate.participants.length}</p>
                       </div>
                     </div>
                   </div>
@@ -156,6 +159,9 @@ const Dashboard = () => {
                         <div className="radial-progress text-primary" style={{ "--value": ((candidate.participants.length / participants.filter((participant) => participant.voteRole == "IPNU").length) * 100 || 0).toFixed(2) }}>
                           {((candidate.participants.length / participants.filter((participant) => participant.voteRole == "IPNU").length) * 100 || 0).toFixed(2)}%
                         </div>
+
+                        <p className="font-semibold uppercase text-center text-lg my-3">Suara Terkumpul</p>
+                        <p className="font-semibold uppercase text-center text-xl text-accent">{candidate.participants.length}</p>
                       </div>
                     </div>
                   </div>
@@ -183,6 +189,9 @@ const Dashboard = () => {
                         <div className="radial-progress text-primary" style={{ "--value": ((candidate.participants.length / participants.filter((participant) => participant.voteRole == "IPPNU").length) * 100 || 0).toFixed(2) }}>
                           {((candidate.participants.length / participants.filter((participant) => participant.voteRole == "IPPNU").length) * 100 || 0).toFixed(2)}%
                         </div>
+
+                        <p className="font-semibold uppercase text-center text-lg my-3">Suara Terkumpul</p>
+                        <p className="font-semibold uppercase text-center text-xl text-accent">{candidate.participants.length}</p>
                       </div>
                     </div>
                   </div>
