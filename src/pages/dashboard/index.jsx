@@ -63,10 +63,7 @@ const Dashboard = () => {
               </div>
 
               <div className="col p-5 lg:w-1/2 w-full flex justify-center items-center bg-base-200 rounded">
-                <div
-                  className="radial-progress text-accent"
-                  style={{ "--value": ((members.filter((member) => member.voted.osis).length / members.filter((member) => !member.voted.osis).length) * 100 || 0).toFixed(2), "--size": "12rem", "--thickness": "5px" }}
-                >
+                <div className="radial-progress text-accent" style={{ "--value": ((members.filter((member) => member.voted.osis).length / members.length) * 100 || 0).toFixed(2), "--size": "12rem", "--thickness": "5px" }}>
                   {((members.filter((member) => member.voted.osis).length / members.length) * 100 || 0).toFixed(2)}%
                 </div>
               </div>
@@ -98,10 +95,7 @@ const Dashboard = () => {
               </div>
 
               <div className="col p-5 lg:w-1/2 w-full flex justify-center items-center bg-base-200 rounded">
-                <div
-                  className="radial-progress text-accent"
-                  style={{ "--value": ((members.filter((member) => member.voted.ippnus).length / members.filter((member) => !member.voted.ippnus).length) * 100 || 0).toFixed(2), "--size": "12rem", "--thickness": "5px" }}
-                >
+                <div className="radial-progress text-accent" style={{ "--value": ((members.filter((member) => member.voted.ippnus).length / members.length) * 100 || 0).toFixed(2), "--size": "12rem", "--thickness": "5px" }}>
                   {((members.filter((member) => member.voted.ippnus).length / members.length) * 100 || 0).toFixed(2)}%
                 </div>
               </div>
