@@ -9,6 +9,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { RiVoiceRecognitionFill, RiVoiceRecognitionLine } from "react-icons/ri";
 import Loading from "@/components/Loading";
+import { MdHowToVote } from "react-icons/md";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -130,7 +131,9 @@ const Dashboard = () => {
                         </div>
 
                         <p className="font-semibold uppercase text-center text-lg my-3">Suara Terkumpul</p>
-                        <p className="font-semibold uppercase text-center text-xl text-accent">{candidate.participants.length}</p>
+                        <p className="font-semibold uppercase text-center text-xl text-accent">
+                          {candidate.participants.length} <MdHowToVote className="inline" />
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -161,7 +164,9 @@ const Dashboard = () => {
                         </div>
 
                         <p className="font-semibold uppercase text-center text-lg my-3">Suara Terkumpul</p>
-                        <p className="font-semibold uppercase text-center text-xl text-accent">{candidate.participants.length}</p>
+                        <p className="font-semibold uppercase text-center text-xl text-accent">
+                          {candidate.participants.length} <MdHowToVote className="inline" />
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -191,7 +196,9 @@ const Dashboard = () => {
                         </div>
 
                         <p className="font-semibold uppercase text-center text-lg my-3">Suara Terkumpul</p>
-                        <p className="font-semibold uppercase text-center text-xl text-accent">{candidate.participants.length}</p>
+                        <p className="font-semibold uppercase text-center text-xl text-accent">
+                          {candidate.participants.length} <MdHowToVote className="inline" />
+                        </p>
                       </div>
                     </div>
                   </div>
