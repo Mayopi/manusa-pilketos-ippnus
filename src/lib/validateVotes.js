@@ -14,7 +14,7 @@ const validateVotes = async (participant, candidate) => {
 
   if (!validMember) throw Error("NIS tidak sesuai dengan Data, Jika anda merasa NIS sudah benar tolong segera melapor ke pihak OSIS atau IPNU IPPNU");
 
-  const existingParticipant = await Participant.find({ name: participant.name.toUpperCase(), nis: validMember.nis });
+  const existingParticipant = await Participant.find({ name: participant.name.toUpperCase(), nis: participant.nis });
 
   if (candidate.role == "OSIS") {
     if (existingParticipant && validMember.voted.osis) throw Error("Hak Suara Anda Sudah Dipakai! Jika anda merasa belum menggunakan hak suara anda tolong segera melapor ke pihak OSIS");
