@@ -24,21 +24,10 @@ const Dashboard = () => {
     },
   });
 
-  const [searchResult, setSearchResult] = useState(null);
-
   const { data: members, isLoading, isValidating, error } = useSWR("/api/member", fetcher);
   const { data: candidates, isLoading: candidateLoading, isValidating: candidateValidating, error: candidateError } = useSWR("/api/candidate", fetcher);
 
   const { data: participants, isLoading: isLoadingParticipant, isValidating: isValidatingParticipant, error: errorParticipant } = useSWR("/api/participant", fetcher);
-
-  useEffect(() => {
-    setSearchResult(members);
-  }, [members]);
-
-  const handleSearchName = (target) => {
-    const filteredMember = members.filter((member) => member.name.toLowerCase().includes(target.value.toLowerCase()) || member.nis.includes(target.value));
-    setSearchResult(filteredMember);
-  };
 
   if (status === "unauthenticated") router.replace("/login");
   return (
@@ -293,10 +282,6 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className="w-full flex justify-end">
-                  <input type="text" placeholder="Cari Nama" className="input input-bordered w-full max-w-lg my-5" onChange={({ target }) => handleSearchName(target)} />
-                </div>
-
                 <div className="overflow-x-auto w-full bg-base-200 rounded p-3">
                   <table className="table table-zebra">
                     {/* head */}
@@ -312,7 +297,7 @@ const Dashboard = () => {
                     </thead>
                     <tbody>
                       {/* row 1 */}
-                      {searchResult
+                      {members
                         .filter((member) => {
                           // Filter berdasarkan kelas
                           const classFilter = filterMember.class === "all" || member.class === filterMember.class;
