@@ -11,7 +11,7 @@ const Footer = () => {
           <br />
           Providing reliable tech by{" "}
           <a href="https://instagram.com/_mayopi" target="__blank" className="link link-hover">
-            mayopi_.
+            _mayopi
           </a>{" "}
           😋
         </p>
@@ -19,10 +19,10 @@ const Footer = () => {
       <nav>
         <header className="footer-title">Social</header>
         <div className="grid grid-flow-col gap-4">
-          <a href="https://instagram.com/manusa">
+          <a href="https://instagram.com/osis_manusa">
             <AiFillInstagram className="text-4xl hover:text-primary transition cursor-pointer" />
           </a>
-          <a href="https://youtube.com/manusa">
+          <a href="https://youtube.com/osissmkmaarifnu1ajibarang860">
             <AiFillYoutube className="text-4xl hover:text-primary transition cursor-pointer" />
           </a>
         </div>
