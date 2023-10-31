@@ -2,13 +2,19 @@ import Member from "@/models/Member";
 import Participant from "@/models/Participant";
 
 const validateVotes = async (participant, candidate) => {
-  const validMember = await Member.findOne({ name: participant.name.toUpperCase() });
+  const validMembers = await Member.find({ name: participant.name.toUpperCase() });
 
-  if (!validMember) throw Error("Anda Tidak Memiliki Hak Suara! Jika anda merasa memiliki hak suara tolong segera melapor ke pihak OSIS atau IPNU IPPNU");
+  if (validMembers.length === 0) throw Error("Anda Tidak Memiliki Hak Suara! Jika anda merasa memiliki hak suara tolong segera melapor ke pihak OSIS atau IPNU IPPNU");
 
-  if (participant.nis !== validMember.nis) throw Error("NIS tidak sesuai dengan Data, Jika anda merasa NIS sudah benar tolong segera melapor ke pihak OSIS atau IPNU IPPNU");
+  const validMember = validMembers.find((member) => {
+    if (participant.nis === member.nis) return member;
 
-  const existingParticipant = await Participant.findOne({ name: participant.name.toUpperCase() });
+    return false;
+  });
+
+  if (!validMember) throw Error("NIS tidak sesuai dengan Data, Jika anda merasa NIS sudah benar tolong segera melapor ke pihak OSIS atau IPNU IPPNU");
+
+  const existingParticipant = await Participant.find({ name: participant.name.toUpperCase(), nis: validMember.nis });
 
   if (candidate.role == "OSIS") {
     if (existingParticipant && validMember.voted.osis) throw Error("Hak Suara Anda Sudah Dipakai! Jika anda merasa belum menggunakan hak suara anda tolong segera melapor ke pihak OSIS");
