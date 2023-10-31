@@ -24,7 +24,6 @@ const Dashboard = () => {
     },
   });
 
-  const [searchName, setSearchName] = useState(null);
   const [searchResult, setSearchResult] = useState(null);
 
   const { data: members, isLoading, isValidating, error } = useSWR("/api/member", fetcher);
